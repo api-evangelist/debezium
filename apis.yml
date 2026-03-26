@@ -1,0 +1,28 @@
+aid: debezium
+name: Debezium
+description: >-
+  Debezium is an open source distributed platform for change data capture that streams database changes to Apache Kafka.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Microservices
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/debezium/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: debezium:debezium
+    name: Debezium
+    description: >-
+      Debezium is an open source distributed platform for change data capture that streams database changes to Apache Kafka.
+    humanURL: https://github.com/api-evangelist/debezium
+    tags:
+      - Microservices
+    properties: []
+common:
+  - type: Website
+    url: https://github.com/api-evangelist/debezium
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
