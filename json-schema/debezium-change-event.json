@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/debezium/debezium-change-event.json",
+  "title": "Debezium Change Event",
+  "description": "Schema for a Debezium change data capture event envelope, containing before/after state and source metadata.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "object",
+      "description": "The Kafka Connect schema for the change event",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "optional": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "The change event payload",
+      "properties": {
+        "before": {
+          "description": "Row state before the change (null for inserts)",
+          "oneOf": [
+            { "type": "object" },
+            { "type": "null" }
+          ]
+        },
+        "after": {
+          "description": "Row state after the change (null for deletes)",
+          "oneOf": [
+            { "type": "object" },
+            { "type": "null" }
+          ]
+        },
+        "source": {
+          "type": "object",
+          "description": "Source metadata about the change event",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Debezium version"
+            },
+            "connector": {
+              "type": "string",
+              "description": "Connector type (mysql, postgresql, mongodb, etc.)"
+            },
+            "name": {
+              "type": "string",
+              "description": "Logical name of the database server"
+            },
+            "ts_ms": {
+              "type": "integer",
+              "description": "Timestamp of the change in the source database (milliseconds)"
+            },
+            "snapshot": {
+              "type": "string",
+              "description": "Whether this event is from a snapshot"
+            },
+            "db": {
+              "type": "string",
+              "description": "Database name"
+            },
+            "schema": {
+              "type": "string",
+              "description": "Schema name"
+            },
+            "table": {
+              "type": "string",
+              "description": "Table name"
+            },
+            "txId": {
+              "type": "integer",
+              "description": "Transaction ID"
+            },
+            "lsn": {
+              "type": "integer",
+              "description": "Log sequence number (PostgreSQL)"
+            },
+            "file": {
+              "type": "string",
+              "description": "Binlog filename (MySQL)"
+            },
+            "pos": {
+              "type": "integer",
+              "description": "Binlog position (MySQL)"
+            },
+            "row": {
+              "type": "integer",
+              "description": "Row within the event"
+            }
+          }
+        },
+        "op": {
+          "type": "string",
+          "enum": ["c", "u", "d", "r", "t"],
+          "description": "Operation type: c=create, u=update, d=delete, r=read (snapshot), t=truncate"
+        },
+        "ts_ms": {
+          "type": "integer",
+          "description": "Timestamp when Debezium processed the event (milliseconds)"
+        },
+        "transaction": {
+          "type": "object",
+          "description": "Transaction metadata",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "total_order": {
+              "type": "integer"
+            },
+            "data_collection_order": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "required": ["op", "source"]
+    }
+  },
+  "required": ["payload"]
+}
