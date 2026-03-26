@@ -1,11 +1,19 @@
 aid: debezium
 name: Debezium
 description: >-
-  Debezium is an open source distributed platform for change data capture that streams database changes to Apache Kafka.
+  Debezium is an open source distributed platform for change data capture
+  (CDC) that converts changes in existing databases into event streams,
+  enabling applications to detect and respond to row-level changes in
+  databases in real time.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Microservices
+  - Change Data Capture
+  - Event Streaming
+  - Databases
+  - Apache Kafka
+  - Open Source
+  - CDC
 url: >-
   https://raw.githubusercontent.com/api-evangelist/debezium/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -15,14 +23,32 @@ apis:
   - aid: debezium:debezium
     name: Debezium
     description: >-
-      Debezium is an open source distributed platform for change data capture that streams database changes to Apache Kafka.
-    humanURL: https://github.com/api-evangelist/debezium
+      Debezium is an open source distributed platform for change data
+      capture that streams database changes to Apache Kafka, supporting
+      connectors for MySQL, PostgreSQL, MongoDB, SQL Server, Oracle, and
+      other databases.
+    humanURL: https://debezium.io/
     tags:
-      - Microservices
+      - Change Data Capture
+      - Event Streaming
+      - Databases
+      - Apache Kafka
+      - Open Source
+      - CDC
     properties: []
 common:
   - type: Website
-    url: https://github.com/api-evangelist/debezium
+    url: https://debezium.io/
+  - type: Documentation
+    url: https://debezium.io/documentation/
+  - type: Getting Started
+    url: https://debezium.io/documentation/reference/stable/tutorial.html
+  - type: GitHub
+    url: https://github.com/debezium/debezium
+  - type: Blog
+    url: https://debezium.io/blog/
+  - type: Community
+    url: https://debezium.io/community/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
