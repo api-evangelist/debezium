@@ -8,12 +8,12 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Change Data Capture
-  - Event Streaming
-  - Databases
   - Apache Kafka
-  - Open Source
   - CDC
+  - Change Data Capture
+  - Databases
+  - Event Streaming
+  - Open Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/debezium/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -29,10 +29,10 @@ apis:
     humanURL: https://debezium.io/documentation/reference/stable/connectors/index.html
     baseURL: http://localhost:8083
     tags:
+      - CDC
+      - Connectors
       - Kafka Connect
       - REST API
-      - Connectors
-      - CDC
     properties:
       - type: Documentation
         url: https://debezium.io/documentation/reference/stable/connectors/index.html
