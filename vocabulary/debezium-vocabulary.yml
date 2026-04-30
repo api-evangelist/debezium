@@ -1,0 +1,45 @@
+name: Debezium Vocabulary
+description: >-
+  Shared vocabulary of terms used across Debezium's change-data-capture
+  platform and its Kafka Connect-based connectors.
+terms:
+  - term: Change Data Capture (CDC)
+    definition: >-
+      Capturing row-level changes (inserts, updates, deletes) from a
+      database and emitting them as events.
+  - term: Connector
+    definition: >-
+      A Debezium component, deployed inside Kafka Connect, that reads a
+      database transaction log and emits change events.
+  - term: Task
+    definition: >-
+      A unit of work assigned by Kafka Connect to a worker for executing
+      part of a connector's job.
+  - term: Source Record
+    definition: >-
+      A change event emitted by a Debezium connector containing before,
+      after, source metadata, operation, and timestamp.
+  - term: Operation (op)
+    definition: >-
+      Indicates the type of change - "c" (create), "u" (update), "d"
+      (delete), "r" (snapshot read), or "t" (truncate).
+  - term: Snapshot
+    definition: >-
+      An initial consistent read of existing data in a database, performed
+      before streaming new changes.
+  - term: Outbox Pattern
+    definition: >-
+      A microservices integration pattern where domain events are written
+      to an outbox table and streamed by Debezium for reliable delivery.
+  - term: Topic
+    definition: >-
+      A Kafka topic into which Debezium publishes change events for a
+      specific table or stream.
+  - term: Offset
+    definition: >-
+      The position in the source database log that a connector has
+      consumed up to.
+  - term: Debezium Server
+    definition: >-
+      A standalone runtime that streams Debezium change events to message
+      brokers other than Kafka (Pulsar, Pub/Sub, Kinesis, etc.).

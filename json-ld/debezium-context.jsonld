@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.debezium.io/",
+    "schema": "https://schema.org/",
+    "debezium": "https://schema.debezium.io/",
+    "Connector": "debezium:Connector",
+    "Task": "debezium:Task",
+    "ChangeEvent": "debezium:ChangeEvent",
+    "Source": "debezium:Source",
+    "name": {"@id": "schema:name", "@type": "schema:Text"},
+    "config": {"@id": "debezium:config"},
+    "status": {"@id": "debezium:status", "@type": "schema:Text"},
+    "type": {"@id": "schema:additionalType", "@type": "schema:Text"},
+    "before": {"@id": "debezium:before"},
+    "after": {"@id": "debezium:after"},
+    "op": {"@id": "debezium:operation", "@type": "schema:Text"},
+    "ts_ms": {"@id": "debezium:tsMs", "@type": "schema:Integer"},
+    "topic": {"@id": "debezium:topic", "@type": "schema:Text"}
+  }
+}

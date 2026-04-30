@@ -17,8 +17,9 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/debezium/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-03-26'
+modified: '2026-04-28'
 specificationVersion: '0.19'
+xType: opensource
 apis:
   - aid: debezium:debezium-kafka-connect-api
     name: Debezium Kafka Connect REST API
@@ -40,6 +41,10 @@ apis:
         url: openapi/debezium-connect.yml
       - type: JSONSchema
         url: json-schema/debezium-change-event.json
+      - type: Rules
+        url: rules/debezium-kafka-connect-api-rules.yml
+      - type: Capabilities
+        url: capabilities/debezium-kafka-connect-api-capabilities.yml
 common:
   - type: Website
     url: https://debezium.io/
@@ -53,6 +58,12 @@ common:
     url: https://debezium.io/blog/
   - type: Community
     url: https://debezium.io/community/
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: JSON-LD
+    url: json-ld/debezium-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/debezium-vocabulary.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

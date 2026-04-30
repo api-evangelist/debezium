@@ -1,0 +1,74 @@
+name: Debezium Kafka Connect REST API Capabilities
+description: >-
+  Capabilities exposed by the Kafka Connect REST API for managing Debezium
+  CDC connectors and tasks.
+capabilities:
+  - name: Get Cluster Info
+    description: Return Kafka Connect worker version and cluster information.
+    operationId: getClusterInfo
+    method: GET
+    path: /
+  - name: List Connectors
+    description: List all configured connectors on the worker.
+    operationId: listConnectors
+    method: GET
+    path: /connectors
+  - name: Create Connector
+    description: Register a new Debezium source connector with configuration.
+    operationId: createConnector
+    method: POST
+    path: /connectors
+  - name: Get Connector
+    description: Retrieve information about a specific connector.
+    operationId: getConnector
+    method: GET
+    path: /connectors/{name}
+  - name: Update Connector Config
+    description: Update the configuration of a Debezium connector.
+    operationId: putConnectorConfig
+    method: PUT
+    path: /connectors/{name}/config
+  - name: Get Connector Status
+    description: Get current state of a connector and its tasks (running/failed/paused).
+    operationId: getConnectorStatus
+    method: GET
+    path: /connectors/{name}/status
+  - name: Pause Connector
+    description: Pause a connector and all its tasks.
+    operationId: pauseConnector
+    method: PUT
+    path: /connectors/{name}/pause
+  - name: Resume Connector
+    description: Resume a paused connector.
+    operationId: resumeConnector
+    method: PUT
+    path: /connectors/{name}/resume
+  - name: Restart Connector
+    description: Restart a connector and optionally its failed tasks.
+    operationId: restartConnector
+    method: POST
+    path: /connectors/{name}/restart
+  - name: Delete Connector
+    description: Remove a connector and stop its tasks.
+    operationId: deleteConnector
+    method: DELETE
+    path: /connectors/{name}
+  - name: List Tasks
+    description: List the tasks for a given connector.
+    operationId: listConnectorTasks
+    method: GET
+    path: /connectors/{name}/tasks
+  - name: Get Connector Offsets
+    description: Read or alter the source offsets for a connector.
+    operationId: getConnectorOffsets
+    method: GET
+    path: /connectors/{name}/offsets
+use_cases:
+  - name: Database to Kafka streaming
+    description: Stream row-level changes from PostgreSQL, MySQL, MongoDB, SQL Server, Oracle, and Db2 into Kafka topics.
+  - name: Outbox pattern
+    description: Implement reliable event-driven microservices using the outbox pattern with Debezium.
+  - name: Cache invalidation
+    description: Drive cache and search-index invalidation in real time from database CDC events.
+  - name: Data warehouse and lakehouse loads
+    description: Land change events into Snowflake, BigQuery, Redshift, S3, or Iceberg via downstream sink connectors.

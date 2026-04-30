@@ -1,0 +1,41 @@
+extends:
+  - spectral:oas
+rules:
+  debezium-info-license:
+    description: API info should include the Apache 2.0 license used by Debezium.
+    given: $.info
+    severity: warn
+    then:
+      field: license
+      function: truthy
+  debezium-connect-base-url:
+    description: Servers should reference a Kafka Connect worker (default port 8083).
+    given: $.servers[*].url
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "8083"
+  debezium-connectors-resource:
+    description: API should expose /connectors as a primary resource path.
+    given: $.paths
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "/connectors"
+  debezium-connector-tasks:
+    description: Connector resources should expose tasks management.
+    given: $.paths
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "/tasks"
+  debezium-operation-tags:
+    description: Operations should be tagged Connectors, Tasks, Cluster, or Topics.
+    given: $.paths[*][*]
+    severity: warn
+    then:
+      field: tags
+      function: truthy
