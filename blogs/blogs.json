@@ -1,0 +1,13 @@
+{
+  "repo": "debezium",
+  "feeds": [
+    {
+      "source": "https://debezium.io/blog/",
+      "feed_url": "https://debezium.io/blog.atom",
+      "saved": 10,
+      "title": ""
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:26:54Z"
+}
