@@ -19,7 +19,7 @@ url: >-
 created: '2026-03-26'
 modified: '2026-04-28'
 specificationVersion: '0.19'
-xType: opensource
+kind: opensource
 apis:
   - aid: debezium:debezium-kafka-connect-api
     name: Debezium Kafka Connect REST API
@@ -50,7 +50,7 @@ common:
     url: https://debezium.io/
   - type: Documentation
     url: https://debezium.io/documentation/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://debezium.io/documentation/reference/stable/tutorial.html
   - type: GitHub
     url: https://github.com/debezium/debezium
@@ -60,7 +60,7 @@ common:
     url: https://debezium.io/community/
   - type: License
     url: https://www.apache.org/licenses/LICENSE-2.0
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/debezium-context.jsonld
   - type: Vocabulary
     url: vocabulary/debezium-vocabulary.yml
