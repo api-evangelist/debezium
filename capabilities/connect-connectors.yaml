@@ -1,0 +1,441 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Debezium Kafka Connect REST API — Connectors
+  description: 'Debezium Kafka Connect REST API — Connectors. 10 operations. Lead operation: List active connectors. Self-contained
+    Naftiko capability covering one Debezium business surface.'
+  tags:
+  - Debezium
+  - Connectors
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DEBEZIUM_API_KEY: DEBEZIUM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: connect-connectors
+    baseUri: http://localhost:8083
+    description: Debezium Kafka Connect REST API — Connectors business capability. Self-contained, no shared references.
+    resources:
+    - name: connectors
+      path: /connectors
+      operations:
+      - name: listconnectors
+        method: GET
+        description: List active connectors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: expand
+          in: query
+          type: string
+      - name: createconnector
+        method: POST
+        description: Create a Debezium connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: connectors-connector
+      path: /connectors/{connector}
+      operations:
+      - name: getconnector
+        method: GET
+        description: Get connector info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connector
+          in: path
+          type: string
+          required: true
+      - name: deleteconnector
+        method: DELETE
+        description: Delete connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connector
+          in: path
+          type: string
+          required: true
+    - name: connectors-connector-config
+      path: /connectors/{connector}/config
+      operations:
+      - name: getconnectorconfig
+        method: GET
+        description: Get connector configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connector
+          in: path
+          type: string
+          required: true
+      - name: updateconnectorconfig
+        method: PUT
+        description: Update connector configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connector
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: connectors-connector-pause
+      path: /connectors/{connector}/pause
+      operations:
+      - name: pauseconnector
+        method: PUT
+        description: Pause connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connector
+          in: path
+          type: string
+          required: true
+    - name: connectors-connector-restart
+      path: /connectors/{connector}/restart
+      operations:
+      - name: restartconnector
+        method: POST
+        description: Restart connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connector
+          in: path
+          type: string
+          required: true
+        - name: includeTasks
+          in: query
+          type: boolean
+        - name: onlyFailed
+          in: query
+          type: boolean
+    - name: connectors-connector-resume
+      path: /connectors/{connector}/resume
+      operations:
+      - name: resumeconnector
+        method: PUT
+        description: Resume connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connector
+          in: path
+          type: string
+          required: true
+    - name: connectors-connector-status
+      path: /connectors/{connector}/status
+      operations:
+      - name: getconnectorstatus
+        method: GET
+        description: Get connector status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connector
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: connect-connectors-rest
+    port: 8080
+    description: REST adapter for Debezium Kafka Connect REST API — Connectors. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/connectors
+      name: connectors
+      description: REST surface for connectors.
+      operations:
+      - method: GET
+        name: listconnectors
+        description: List active connectors
+        call: connect-connectors.listconnectors
+        with:
+          expand: rest.expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createconnector
+        description: Create a Debezium connector
+        call: connect-connectors.createconnector
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connectors/{connector}
+      name: connectors-connector
+      description: REST surface for connectors-connector.
+      operations:
+      - method: GET
+        name: getconnector
+        description: Get connector info
+        call: connect-connectors.getconnector
+        with:
+          connector: rest.connector
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteconnector
+        description: Delete connector
+        call: connect-connectors.deleteconnector
+        with:
+          connector: rest.connector
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connectors/{connector}/config
+      name: connectors-connector-config
+      description: REST surface for connectors-connector-config.
+      operations:
+      - method: GET
+        name: getconnectorconfig
+        description: Get connector configuration
+        call: connect-connectors.getconnectorconfig
+        with:
+          connector: rest.connector
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateconnectorconfig
+        description: Update connector configuration
+        call: connect-connectors.updateconnectorconfig
+        with:
+          connector: rest.connector
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connectors/{connector}/pause
+      name: connectors-connector-pause
+      description: REST surface for connectors-connector-pause.
+      operations:
+      - method: PUT
+        name: pauseconnector
+        description: Pause connector
+        call: connect-connectors.pauseconnector
+        with:
+          connector: rest.connector
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connectors/{connector}/restart
+      name: connectors-connector-restart
+      description: REST surface for connectors-connector-restart.
+      operations:
+      - method: POST
+        name: restartconnector
+        description: Restart connector
+        call: connect-connectors.restartconnector
+        with:
+          connector: rest.connector
+          includeTasks: rest.includeTasks
+          onlyFailed: rest.onlyFailed
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connectors/{connector}/resume
+      name: connectors-connector-resume
+      description: REST surface for connectors-connector-resume.
+      operations:
+      - method: PUT
+        name: resumeconnector
+        description: Resume connector
+        call: connect-connectors.resumeconnector
+        with:
+          connector: rest.connector
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connectors/{connector}/status
+      name: connectors-connector-status
+      description: REST surface for connectors-connector-status.
+      operations:
+      - method: GET
+        name: getconnectorstatus
+        description: Get connector status
+        call: connect-connectors.getconnectorstatus
+        with:
+          connector: rest.connector
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: connect-connectors-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Debezium Kafka Connect REST API — Connectors. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-active-connectors
+      description: List active connectors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-connectors.listconnectors
+      with:
+        expand: tools.expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-debezium-connector
+      description: Create a Debezium connector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: connect-connectors.createconnector
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-connector-info
+      description: Get connector info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-connectors.getconnector
+      with:
+        connector: tools.connector
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-connector
+      description: Delete connector
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: connect-connectors.deleteconnector
+      with:
+        connector: tools.connector
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-connector-configuration
+      description: Get connector configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-connectors.getconnectorconfig
+      with:
+        connector: tools.connector
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-connector-configuration
+      description: Update connector configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: connect-connectors.updateconnectorconfig
+      with:
+        connector: tools.connector
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: pause-connector
+      description: Pause connector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: connect-connectors.pauseconnector
+      with:
+        connector: tools.connector
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restart-connector
+      description: Restart connector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: connect-connectors.restartconnector
+      with:
+        connector: tools.connector
+        includeTasks: tools.includeTasks
+        onlyFailed: tools.onlyFailed
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resume-connector
+      description: Resume connector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: connect-connectors.resumeconnector
+      with:
+        connector: tools.connector
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-connector-status
+      description: Get connector status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-connectors.getconnectorstatus
+      with:
+        connector: tools.connector
+      outputParameters:
+      - type: object
+        mapping: $.

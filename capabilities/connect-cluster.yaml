@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Debezium Kafka Connect REST API — Cluster
+  description: 'Debezium Kafka Connect REST API — Cluster. 1 operations. Lead operation: Get Connect cluster info. Self-contained
+    Naftiko capability covering one Debezium business surface.'
+  tags:
+  - Debezium
+  - Cluster
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DEBEZIUM_API_KEY: DEBEZIUM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: connect-cluster
+    baseUri: http://localhost:8083
+    description: Debezium Kafka Connect REST API — Cluster business capability. Self-contained, no shared references.
+    resources:
+    - name: root
+      path: /
+      operations:
+      - name: getclusterinfo
+        method: GET
+        description: Get Connect cluster info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: connect-cluster-rest
+    port: 8080
+    description: REST adapter for Debezium Kafka Connect REST API — Cluster. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1
+      name: root
+      description: REST surface for root.
+      operations:
+      - method: GET
+        name: getclusterinfo
+        description: Get Connect cluster info
+        call: connect-cluster.getclusterinfo
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: connect-cluster-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Debezium Kafka Connect REST API — Cluster. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-connect-cluster-info
+      description: Get Connect cluster info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-cluster.getclusterinfo
+      outputParameters:
+      - type: object
+        mapping: $.
