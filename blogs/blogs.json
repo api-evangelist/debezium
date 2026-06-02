@@ -2,12 +2,20 @@
   "repo": "debezium",
   "feeds": [
     {
-      "source": "https://debezium.io/blog/",
+      "source": "https://debezium.io/feed",
       "feed_url": "https://debezium.io/feed",
-      "title": "Debezium",
-      "saved": 17
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://github.com/debezium/debezium",
+      "feed_url": "https://github.com/debezium/debezium",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 28,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 32,
+  "fetched": "2026-06-01T23:35:02Z"
 }
