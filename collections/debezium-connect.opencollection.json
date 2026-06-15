@@ -1,0 +1,407 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Debezium Kafka Connect REST API",
+    "version": "2.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Connect cluster info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/"
+          },
+          "docs": "Get Connect cluster info"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List active connectors"
+        },
+        {
+          "info": {
+            "name": "Create a Debezium connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8083/connectors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Debezium connector"
+        },
+        {
+          "info": {
+            "name": "Get connector info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors/:connector",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get connector info"
+        },
+        {
+          "info": {
+            "name": "Delete connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8083/connectors/:connector",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete connector"
+        },
+        {
+          "info": {
+            "name": "Get connector configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors/:connector/config",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get connector configuration"
+        },
+        {
+          "info": {
+            "name": "Update connector configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8083/connectors/:connector/config",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update connector configuration"
+        },
+        {
+          "info": {
+            "name": "Get connector status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors/:connector/status",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get connector status"
+        },
+        {
+          "info": {
+            "name": "Restart connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8083/connectors/:connector/restart",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeTasks",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "onlyFailed",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Restart connector"
+        },
+        {
+          "info": {
+            "name": "Pause connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8083/connectors/:connector/pause",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Pause connector"
+        },
+        {
+          "info": {
+            "name": "Resume connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8083/connectors/:connector/resume",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resume connector"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connector tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors/:connector/tasks",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List connector tasks"
+        },
+        {
+          "info": {
+            "name": "Get task status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors/:connector/tasks/:task/status",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "task",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get task status"
+        },
+        {
+          "info": {
+            "name": "Restart task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8083/connectors/:connector/tasks/:task/restart",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "task",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restart task"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Offsets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get connector offsets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors/:connector/offsets",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get connector offsets"
+        },
+        {
+          "info": {
+            "name": "Alter connector offsets",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8083/connectors/:connector/offsets",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Alter connector offsets"
+        },
+        {
+          "info": {
+            "name": "Reset connector offsets",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8083/connectors/:connector/offsets",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset connector offsets"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plugins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List installed connector plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connector-plugins"
+          },
+          "docs": "List installed connector plugins"
+        },
+        {
+          "info": {
+            "name": "Validate connector configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8083/connector-plugins/:plugin/config/validate",
+            "params": [
+              {
+                "name": "plugin",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate connector configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
