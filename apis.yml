@@ -5,7 +5,7 @@ description: >-
   databases into event streams, enabling applications to detect and respond to row-level changes in databases in real
   time.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Apache Kafka
   - CDC
