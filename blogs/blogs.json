@@ -2,11 +2,11 @@
   "repo": "debezium",
   "feeds": [
     {
-      "source": "https://debezium.io/blog/",
+      "source": "https://debezium.io/blog.atom",
       "feed_url": "https://debezium.io/blog.atom",
       "title": "",
-      "saved": 0,
-      "method": "discovered"
+      "saved": 1,
+      "method": "feed"
     },
     {
       "source": "https://github.com/debezium/debezium",
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 33,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 35,
+  "fetched": "2026-06-27T12:03:07Z"
 }
