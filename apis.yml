@@ -43,6 +43,8 @@ apis:
       - type: Capabilities
         url: capabilities/debezium-kafka-connect-api-capabilities.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/debezium-agentic-access.yml
   - type: DomainSecurity
     url: security/debezium-domain-security.yml
   - type: LinkedIn
