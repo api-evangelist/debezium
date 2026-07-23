@@ -1,0 +1,324 @@
+openapi: 3.1.0
+info:
+  title: Debezium Kafka Connect REST Cluster Connectors API
+  description: Debezium runs as connectors within Kafka Connect. This API provides endpoints for managing Debezium CDC connectors, their configurations, tasks, and offsets via the Kafka Connect REST interface.
+  version: 2.6.0
+  contact:
+    name: Debezium
+    url: https://debezium.io/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8083
+  description: Default Kafka Connect worker running Debezium
+tags:
+- name: Connectors
+paths:
+  /connectors:
+    get:
+      summary: List active connectors
+      operationId: listConnectors
+      tags:
+      - Connectors
+      parameters:
+      - name: expand
+        in: query
+        schema:
+          type: string
+          enum:
+          - status
+          - info
+      responses:
+        '200':
+          description: List of connector names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+    post:
+      summary: Create a Debezium connector
+      operationId: createConnector
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConnectorRequest'
+      responses:
+        '201':
+          description: Connector created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorInfo'
+        '409':
+          description: Connector with this name already exists
+  /connectors/{connector}:
+    get:
+      summary: Get connector info
+      operationId: getConnector
+      tags:
+      - Connectors
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Connector details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorInfo'
+        '404':
+          description: Connector not found
+    delete:
+      summary: Delete connector
+      operationId: deleteConnector
+      tags:
+      - Connectors
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Connector deleted
+  /connectors/{connector}/config:
+    get:
+      summary: Get connector configuration
+      operationId: getConnectorConfig
+      tags:
+      - Connectors
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Connector config key-value pairs
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+    put:
+      summary: Update connector configuration
+      operationId: updateConnectorConfig
+      tags:
+      - Connectors
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+      responses:
+        '200':
+          description: Configuration updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorInfo'
+  /connectors/{connector}/status:
+    get:
+      summary: Get connector status
+      operationId: getConnectorStatus
+      tags:
+      - Connectors
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Connector and task status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorStatus'
+  /connectors/{connector}/restart:
+    post:
+      summary: Restart connector
+      operationId: restartConnector
+      tags:
+      - Connectors
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: includeTasks
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - name: onlyFailed
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Connector restarted
+        '204':
+          description: Connector restarted
+  /connectors/{connector}/pause:
+    put:
+      summary: Pause connector
+      operationId: pauseConnector
+      tags:
+      - Connectors
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Pause request accepted
+  /connectors/{connector}/resume:
+    put:
+      summary: Resume connector
+      operationId: resumeConnector
+      tags:
+      - Connectors
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Resume request accepted
+components:
+  schemas:
+    CreateConnectorRequest:
+      type: object
+      required:
+      - name
+      - config
+      properties:
+        name:
+          type: string
+          description: Unique connector name
+        config:
+          type: object
+          description: Connector configuration properties
+          additionalProperties:
+            type: string
+          properties:
+            connector.class:
+              type: string
+              description: Debezium connector class, e.g. io.debezium.connector.mysql.MySqlConnector, io.debezium.connector.postgresql.PostgresConnector, io.debezium.connector.mongodb.MongoDbConnector, io.debezium.connector.sqlserver.SqlServerConnector, io.debezium.connector.oracle.OracleConnector
+            database.hostname:
+              type: string
+            database.port:
+              type: string
+            database.user:
+              type: string
+            database.password:
+              type: string
+            database.dbname:
+              type: string
+            topic.prefix:
+              type: string
+              description: Prefix for Kafka topic names
+            schema.history.internal.kafka.bootstrap.servers:
+              type: string
+            schema.history.internal.kafka.topic:
+              type: string
+            table.include.list:
+              type: string
+              description: Comma-separated list of tables to capture
+            snapshot.mode:
+              type: string
+              description: Snapshot mode (initial, schema_only, never, etc.)
+    ConnectorStatus:
+      type: object
+      properties:
+        name:
+          type: string
+        connector:
+          type: object
+          properties:
+            state:
+              type: string
+              enum:
+              - UNASSIGNED
+              - RUNNING
+              - PAUSED
+              - FAILED
+              - STOPPED
+            worker_id:
+              type: string
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskStatus'
+        type:
+          type: string
+    ConnectorInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        config:
+          type: object
+          additionalProperties:
+            type: string
+        tasks:
+          type: array
+          items:
+            type: object
+            properties:
+              connector:
+                type: string
+              task:
+                type: integer
+        type:
+          type: string
+          enum:
+          - source
+          - sink
+    TaskStatus:
+      type: object
+      properties:
+        id:
+          type: integer
+        state:
+          type: string
+          enum:
+          - UNASSIGNED
+          - RUNNING
+          - PAUSED
+          - FAILED
+        worker_id:
+          type: string
+        trace:
+          type: string

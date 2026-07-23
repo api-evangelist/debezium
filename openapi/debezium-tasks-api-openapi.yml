@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Debezium Kafka Connect REST Cluster Tasks API
+  description: Debezium runs as connectors within Kafka Connect. This API provides endpoints for managing Debezium CDC connectors, their configurations, tasks, and offsets via the Kafka Connect REST interface.
+  version: 2.6.0
+  contact:
+    name: Debezium
+    url: https://debezium.io/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8083
+  description: Default Kafka Connect worker running Debezium
+tags:
+- name: Tasks
+paths:
+  /connectors/{connector}/tasks:
+    get:
+      summary: List connector tasks
+      operationId: listTasks
+      tags:
+      - Tasks
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskInfo'
+  /connectors/{connector}/tasks/{task}/status:
+    get:
+      summary: Get task status
+      operationId: getTaskStatus
+      tags:
+      - Tasks
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Task status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatus'
+  /connectors/{connector}/tasks/{task}/restart:
+    post:
+      summary: Restart task
+      operationId: restartTask
+      tags:
+      - Tasks
+      parameters:
+      - name: connector
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Task restarted
+components:
+  schemas:
+    TaskInfo:
+      type: object
+      properties:
+        id:
+          type: object
+          properties:
+            connector:
+              type: string
+            task:
+              type: integer
+        config:
+          type: object
+          additionalProperties:
+            type: string
+    TaskStatus:
+      type: object
+      properties:
+        id:
+          type: integer
+        state:
+          type: string
+          enum:
+          - UNASSIGNED
+          - RUNNING
+          - PAUSED
+          - FAILED
+        worker_id:
+          type: string
+        trace:
+          type: string

@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: Debezium Kafka Connect REST Cluster Plugins API
+  description: Debezium runs as connectors within Kafka Connect. This API provides endpoints for managing Debezium CDC connectors, their configurations, tasks, and offsets via the Kafka Connect REST interface.
+  version: 2.6.0
+  contact:
+    name: Debezium
+    url: https://debezium.io/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8083
+  description: Default Kafka Connect worker running Debezium
+tags:
+- name: Plugins
+paths:
+  /connector-plugins:
+    get:
+      summary: List installed connector plugins
+      operationId: listPlugins
+      tags:
+      - Plugins
+      responses:
+        '200':
+          description: List of plugins
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    class:
+                      type: string
+                    type:
+                      type: string
+                    version:
+                      type: string
+  /connector-plugins/{plugin}/config/validate:
+    put:
+      summary: Validate connector configuration
+      operationId: validateConfig
+      tags:
+      - Plugins
+      parameters:
+      - name: plugin
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  error_count:
+                    type: integer
+                  groups:
+                    type: array
+                    items:
+                      type: string
+                  configs:
+                    type: array
+                    items:
+                      type: object
