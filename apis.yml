@@ -5,7 +5,19 @@ description: >-
   databases into event streams, enabling applications to detect and respond to row-level changes in databases in real
   time.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/debezium.png
 tags:
   - Apache Kafka
   - CDC
@@ -19,29 +31,96 @@ modified: '2026-05-19'
 specificationVersion: '0.19'
 kind: opensource
 apis:
-  - aid: debezium:debezium-kafka-connect-api
-    name: Debezium Kafka Connect REST API
-    description: >-
-      Debezium runs as Kafka Connect source connectors. This API manages Debezium CDC connectors, their configurations,
-      tasks, and offsets via the standard Kafka Connect REST interface.
-    humanURL: https://debezium.io/documentation/reference/stable/connectors/index.html
-    baseURL: http://localhost:8083
-    tags:
-      - CDC
-      - Connectors
-      - Kafka Connect
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://debezium.io/documentation/reference/stable/connectors/index.html
-      - type: OpenAPI
-        url: openapi/debezium-connect.yml
-      - type: JSONSchema
-        url: json-schema/debezium-change-event.json
-      - type: Rules
-        url: rules/debezium-kafka-connect-api-rules.yml
-      - type: Capabilities
-        url: capabilities/debezium-kafka-connect-api-capabilities.yml
+- aid: debezium:debezium-cluster-api
+  name: Debezium Cluster API
+  description: The Cluster API from Debezium — 1 operation(s) for cluster.
+  humanURL: https://debezium.io/documentation/reference/stable/connectors/index.html
+  baseURL: http://localhost:8083
+  tags:
+  - Cluster
+  properties:
+  - type: OpenAPI
+    url: openapi/debezium-cluster-api-openapi.yml
+  - type: Documentation
+    url: https://debezium.io/documentation/reference/stable/connectors/index.html
+  - type: JSONSchema
+    url: json-schema/debezium-change-event.json
+  - type: Rules
+    url: rules/debezium-kafka-connect-api-rules.yml
+  - type: Capabilities
+    url: capabilities/debezium-kafka-connect-api-capabilities.yml
+- aid: debezium:debezium-connectors-api
+  name: Debezium Connectors API
+  description: The Connectors API from Debezium — 7 operation(s) for connectors.
+  humanURL: https://debezium.io/documentation/reference/stable/connectors/index.html
+  baseURL: http://localhost:8083
+  tags:
+  - Connectors
+  properties:
+  - type: OpenAPI
+    url: openapi/debezium-connectors-api-openapi.yml
+  - type: Documentation
+    url: https://debezium.io/documentation/reference/stable/connectors/index.html
+  - type: JSONSchema
+    url: json-schema/debezium-change-event.json
+  - type: Rules
+    url: rules/debezium-kafka-connect-api-rules.yml
+  - type: Capabilities
+    url: capabilities/debezium-kafka-connect-api-capabilities.yml
+- aid: debezium:debezium-offsets-api
+  name: Debezium Offsets API
+  description: The Offsets API from Debezium — 1 operation(s) for offsets.
+  humanURL: https://debezium.io/documentation/reference/stable/connectors/index.html
+  baseURL: http://localhost:8083
+  tags:
+  - Offsets
+  properties:
+  - type: OpenAPI
+    url: openapi/debezium-offsets-api-openapi.yml
+  - type: Documentation
+    url: https://debezium.io/documentation/reference/stable/connectors/index.html
+  - type: JSONSchema
+    url: json-schema/debezium-change-event.json
+  - type: Rules
+    url: rules/debezium-kafka-connect-api-rules.yml
+  - type: Capabilities
+    url: capabilities/debezium-kafka-connect-api-capabilities.yml
+- aid: debezium:debezium-plugins-api
+  name: Debezium Plugins API
+  description: The Plugins API from Debezium — 2 operation(s) for plugins.
+  humanURL: https://debezium.io/documentation/reference/stable/connectors/index.html
+  baseURL: http://localhost:8083
+  tags:
+  - Plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/debezium-plugins-api-openapi.yml
+  - type: Documentation
+    url: https://debezium.io/documentation/reference/stable/connectors/index.html
+  - type: JSONSchema
+    url: json-schema/debezium-change-event.json
+  - type: Rules
+    url: rules/debezium-kafka-connect-api-rules.yml
+  - type: Capabilities
+    url: capabilities/debezium-kafka-connect-api-capabilities.yml
+- aid: debezium:debezium-tasks-api
+  name: Debezium Tasks API
+  description: The Tasks API from Debezium — 3 operation(s) for tasks.
+  humanURL: https://debezium.io/documentation/reference/stable/connectors/index.html
+  baseURL: http://localhost:8083
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/debezium-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://debezium.io/documentation/reference/stable/connectors/index.html
+  - type: JSONSchema
+    url: json-schema/debezium-change-event.json
+  - type: Rules
+    url: rules/debezium-kafka-connect-api-rules.yml
+  - type: Capabilities
+    url: capabilities/debezium-kafka-connect-api-capabilities.yml
 common:
   - type: AgenticAccess
     url: agentic-access/debezium-agentic-access.yml
