@@ -1,0 +1,22 @@
+{
+  "provider": "debezium",
+  "sources": [
+    "debezium-cluster-api-openapi.yml",
+    "debezium-connectors-api-openapi.yml",
+    "debezium-offsets-api-openapi.yml",
+    "debezium-plugins-api-openapi.yml",
+    "debezium-tasks-api-openapi.yml"
+  ],
+  "outputs": [
+    "debezium-cluster-api-openapi.yml",
+    "debezium-connectors-api-openapi.yml",
+    "debezium-offsets-api-openapi.yml",
+    "debezium-plugins-api-openapi.yml",
+    "debezium-tasks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
