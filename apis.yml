@@ -47,8 +47,6 @@ apis:
     url: json-schema/debezium-change-event.json
   - type: Rules
     url: rules/debezium-kafka-connect-api-rules.yml
-  - type: Capabilities
-    url: capabilities/debezium-kafka-connect-api-capabilities.yml
 - aid: debezium:debezium-connectors-api
   name: Debezium Connectors API
   description: The Connectors API from Debezium — 7 operation(s) for connectors.
@@ -65,8 +63,6 @@ apis:
     url: json-schema/debezium-change-event.json
   - type: Rules
     url: rules/debezium-kafka-connect-api-rules.yml
-  - type: Capabilities
-    url: capabilities/debezium-kafka-connect-api-capabilities.yml
 - aid: debezium:debezium-offsets-api
   name: Debezium Offsets API
   description: The Offsets API from Debezium — 1 operation(s) for offsets.
@@ -83,8 +79,6 @@ apis:
     url: json-schema/debezium-change-event.json
   - type: Rules
     url: rules/debezium-kafka-connect-api-rules.yml
-  - type: Capabilities
-    url: capabilities/debezium-kafka-connect-api-capabilities.yml
 - aid: debezium:debezium-plugins-api
   name: Debezium Plugins API
   description: The Plugins API from Debezium — 2 operation(s) for plugins.
@@ -101,8 +95,6 @@ apis:
     url: json-schema/debezium-change-event.json
   - type: Rules
     url: rules/debezium-kafka-connect-api-rules.yml
-  - type: Capabilities
-    url: capabilities/debezium-kafka-connect-api-capabilities.yml
 - aid: debezium:debezium-tasks-api
   name: Debezium Tasks API
   description: The Tasks API from Debezium — 3 operation(s) for tasks.
@@ -119,8 +111,6 @@ apis:
     url: json-schema/debezium-change-event.json
   - type: Rules
     url: rules/debezium-kafka-connect-api-rules.yml
-  - type: Capabilities
-    url: capabilities/debezium-kafka-connect-api-capabilities.yml
 common:
   - type: AgenticAccess
     url: agentic-access/debezium-agentic-access.yml
