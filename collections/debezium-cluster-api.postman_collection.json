@@ -1,0 +1,99 @@
+{
+  "item": [
+    {
+      "id": "d7c8358d-6966-4f6f-be0b-434d0661ae9e",
+      "name": "Cluster",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94c5fdb1-cf05-4890-ad09-b1bb3c30176b",
+          "name": "Get Connect cluster info",
+          "request": {
+            "name": "Get Connect cluster info",
+            "description": {},
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "644a57f5-3ad8-496f-a45c-1fc0ba80e92a",
+              "name": "Kafka Connect worker info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\",\n  \"commit\": \"string\",\n  \"kafka_cluster_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8083",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c7bd843-a5f2-464c-8951-ba432f791ca0",
+    "name": "Debezium Kafka Connect REST Cluster API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Debezium runs as connectors within Kafka Connect. This API provides endpoints for managing Debezium CDC connectors, their configurations, tasks, and offsets via the Kafka Connect REST interface.\n\nContact Support:\n Name: Debezium",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Debezium Kafka Connect REST Cluster API",
+    "version": "2.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Connect cluster info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/"
+          },
+          "docs": "Get Connect cluster info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

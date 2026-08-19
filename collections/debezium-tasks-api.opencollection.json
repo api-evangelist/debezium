@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Debezium Kafka Connect REST Cluster Tasks API",
+    "version": "2.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connector tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors/:connector/tasks",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List connector tasks"
+        },
+        {
+          "info": {
+            "name": "Get task status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8083/connectors/:connector/tasks/:task/status",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "task",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get task status"
+        },
+        {
+          "info": {
+            "name": "Restart task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8083/connectors/:connector/tasks/:task/restart",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "task",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restart task"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
