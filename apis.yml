@@ -31,7 +31,6 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/debezium.png
 tags:
   - Apache Kafka
-  - CDC
   - Change Data Capture
   - Databases
   - Event Streaming
