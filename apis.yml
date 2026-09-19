@@ -32,7 +32,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/debezium.p
 tags:
   - Apache Kafka
   - Change Data Capture
-  - Databases
+  - Database
   - Event Streaming
   - Open-Source
 tags_raw:
