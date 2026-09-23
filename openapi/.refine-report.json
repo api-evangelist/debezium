@@ -1,11 +1,7 @@
 {
   "provider": "debezium",
   "sources": [
-    "debezium-cluster-api-openapi.yml",
-    "debezium-connectors-api-openapi.yml",
-    "debezium-offsets-api-openapi.yml",
-    "debezium-plugins-api-openapi.yml",
-    "debezium-tasks-api-openapi.yml"
+    "_original/debezium-connect.yml"
   ],
   "outputs": [
     "debezium-cluster-api-openapi.yml",
@@ -17,6 +13,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "debezium-connect.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "debezium-connect.yml: declared missing tag: Cluster",
+    "debezium-connect.yml: declared missing tag: Connectors",
+    "debezium-connect.yml: declared missing tag: Offsets",
+    "debezium-connect.yml: declared missing tag: Plugins",
+    "debezium-connect.yml: declared missing tag: Tasks",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "debezium-cluster-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debezium-connectors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debezium-offsets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debezium-plugins-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debezium-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

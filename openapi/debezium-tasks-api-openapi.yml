@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Debezium Kafka Connect REST Cluster Tasks API
+  title: Debezium Kafka Connect REST Tasks API
   description: Debezium runs as connectors within Kafka Connect. This API provides endpoints for managing Debezium CDC connectors, their configurations, tasks, and offsets via the Kafka Connect REST interface.
   version: 2.6.0
   contact:
@@ -82,20 +82,6 @@ paths:
           description: Task restarted
 components:
   schemas:
-    TaskInfo:
-      type: object
-      properties:
-        id:
-          type: object
-          properties:
-            connector:
-              type: string
-            task:
-              type: integer
-        config:
-          type: object
-          additionalProperties:
-            type: string
     TaskStatus:
       type: object
       properties:
@@ -112,3 +98,17 @@ components:
           type: string
         trace:
           type: string
+    TaskInfo:
+      type: object
+      properties:
+        id:
+          type: object
+          properties:
+            connector:
+              type: string
+            task:
+              type: integer
+        config:
+          type: object
+          additionalProperties:
+            type: string
