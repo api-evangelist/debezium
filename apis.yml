@@ -6,15 +6,21 @@ description: >-
   time.
 type: Index
 deliveryModel:
-  model: unknown
-  open_source: false
+  model: self-hosted
+  license: Apache-2.0
+  license_evidence:
+    repo: debezium/debezium
+    spdx: Apache-2.0
+    stars: 13151
+  open_source: true
   commercial: false
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Self-hosted open source · you run it yourself
+  confidence: medium
   source:
   - openapi
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -34,14 +40,14 @@ tags:
   - Change Data Capture
   - Database
   - Event Streaming
-  - Open-Source
+  - Open Source
 tags_raw:
   - Apache Kafka
-  - CDC
   - Change Data Capture
   - Databases
   - Event Streaming
   - Open Source
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/debezium/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-05-19'

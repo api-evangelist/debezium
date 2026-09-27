@@ -218,6 +218,69 @@ paths:
           description: Resume request accepted
 components:
   schemas:
+    ConnectorInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        config:
+          type: object
+          additionalProperties:
+            type: string
+        tasks:
+          type: array
+          items:
+            type: object
+            properties:
+              connector:
+                type: string
+              task:
+                type: integer
+        type:
+          type: string
+          enum:
+          - source
+          - sink
+    ConnectorStatus:
+      type: object
+      properties:
+        name:
+          type: string
+        connector:
+          type: object
+          properties:
+            state:
+              type: string
+              enum:
+              - UNASSIGNED
+              - RUNNING
+              - PAUSED
+              - FAILED
+              - STOPPED
+            worker_id:
+              type: string
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskStatus'
+        type:
+          type: string
+    TaskStatus:
+      type: object
+      properties:
+        id:
+          type: integer
+        state:
+          type: string
+          enum:
+          - UNASSIGNED
+          - RUNNING
+          - PAUSED
+          - FAILED
+        worker_id:
+          type: string
+        trace:
+          type: string
     CreateConnectorRequest:
       type: object
       required:
@@ -259,66 +322,3 @@ components:
             snapshot.mode:
               type: string
               description: Snapshot mode (initial, schema_only, never, etc.)
-    TaskStatus:
-      type: object
-      properties:
-        id:
-          type: integer
-        state:
-          type: string
-          enum:
-          - UNASSIGNED
-          - RUNNING
-          - PAUSED
-          - FAILED
-        worker_id:
-          type: string
-        trace:
-          type: string
-    ConnectorStatus:
-      type: object
-      properties:
-        name:
-          type: string
-        connector:
-          type: object
-          properties:
-            state:
-              type: string
-              enum:
-              - UNASSIGNED
-              - RUNNING
-              - PAUSED
-              - FAILED
-              - STOPPED
-            worker_id:
-              type: string
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaskStatus'
-        type:
-          type: string
-    ConnectorInfo:
-      type: object
-      properties:
-        name:
-          type: string
-        config:
-          type: object
-          additionalProperties:
-            type: string
-        tasks:
-          type: array
-          items:
-            type: object
-            properties:
-              connector:
-                type: string
-              task:
-                type: integer
-        type:
-          type: string
-          enum:
-          - source
-          - sink
