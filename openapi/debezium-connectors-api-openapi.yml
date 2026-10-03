@@ -218,29 +218,22 @@ paths:
           description: Resume request accepted
 components:
   schemas:
-    ConnectorInfo:
+    TaskStatus:
       type: object
       properties:
-        name:
-          type: string
-        config:
-          type: object
-          additionalProperties:
-            type: string
-        tasks:
-          type: array
-          items:
-            type: object
-            properties:
-              connector:
-                type: string
-              task:
-                type: integer
-        type:
+        id:
+          type: integer
+        state:
           type: string
           enum:
-          - source
-          - sink
+          - UNASSIGNED
+          - RUNNING
+          - PAUSED
+          - FAILED
+        worker_id:
+          type: string
+        trace:
+          type: string
     ConnectorStatus:
       type: object
       properties:
@@ -265,22 +258,29 @@ components:
             $ref: '#/components/schemas/TaskStatus'
         type:
           type: string
-    TaskStatus:
+    ConnectorInfo:
       type: object
       properties:
-        id:
-          type: integer
-        state:
+        name:
+          type: string
+        config:
+          type: object
+          additionalProperties:
+            type: string
+        tasks:
+          type: array
+          items:
+            type: object
+            properties:
+              connector:
+                type: string
+              task:
+                type: integer
+        type:
           type: string
           enum:
-          - UNASSIGNED
-          - RUNNING
-          - PAUSED
-          - FAILED
-        worker_id:
-          type: string
-        trace:
-          type: string
+          - source
+          - sink
     CreateConnectorRequest:
       type: object
       required:
