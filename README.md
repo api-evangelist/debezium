@@ -1,4 +1,4 @@
-# Debezium (debezium)
+# Debezium
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,66 +66,148 @@
 
 Debezium is an open source distributed platform for change data capture (CDC) that converts changes in existing databases into event streams, enabling applications to detect and respond to row-level changes in databases in real time.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/debezium/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/debezium/refs/heads/main/apis.yml)
+**Areas:** Apache Kafka · Change Data Capture · Database · Event Streaming · Open Source
 
-## Scope
+## Debezium on APIs.io
 
-- **Type:** Index
+Everything profiled for Debezium is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/debezium/](https://apis.io/providers/debezium/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Apache Kafka
-- CDC
-- Change Data Capture
-- Databases
-- Event Streaming
-- Open Source
+- [Debezium Cluster API](https://apis.io/apis/debezium/debezium-cluster-api/) — The Cluster API from Debezium — 1 operation(s) for cluster.
+- [Debezium Connectors API](https://apis.io/apis/debezium/debezium-connectors-api/) — The Connectors API from Debezium — 7 operation(s) for connectors.
+- [Debezium Offsets API](https://apis.io/apis/debezium/debezium-offsets-api/) — The Offsets API from Debezium — 1 operation(s) for offsets.
+- [Debezium Plugins API](https://apis.io/apis/debezium/debezium-plugins-api/) — The Plugins API from Debezium — 2 operation(s) for plugins.
+- [Debezium Tasks API](https://apis.io/apis/debezium/debezium-tasks-api/) — The Tasks API from Debezium — 3 operation(s) for tasks.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Debezium Kafka Connect REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Debezium runs as Kafka Connect source connectors. This API manages Debezium CDC connectors, their configurations, tasks, and offsets via the standard Kafka Connect REST interface.
+- [Debezium Agentic Access](https://apis.io/agentic-access/debezium/debezium-agentic-access/)
 
-- **Human URL:** [https://debezium.io/documentation/reference/stable/connectors/index.html](https://debezium.io/documentation/reference/stable/connectors/index.html)
-- **Base URL:** `http://localhost:8083`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- CDC
-- Connectors
-- Kafka Connect
-- REST API
+- [Debezium Change Event](https://apis.io/schemas/debezium/debezium-change-event/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://debezium.io/documentation/reference/stable/connectors/index.html)
-- [OpenAPI](openapi/debezium-connect.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/debezium-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/debezium-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/debezium-change-event.json) — [JSON Schema](https://json-schema.org/specification)
-- [Rules](rules/debezium-kafka-connect-api-rules.yml)
-- [Capabilities](capabilities/debezium-kafka-connect-api-capabilities.yml)
+Linked-data contexts for the provider's vocabulary.
 
-## Common Properties
+- [Debezium Context](https://apis.io/jsonld/debezium/debezium-context/)
 
-- [LinkedIn](https://www.linkedin.com/company/debezium)
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Debezium Vocabulary](https://apis.io/vocabularies/debezium/debezium-vocabulary/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Debezium Kafka Connect REST Cluster API](https://apis.io/collections/debezium/open-debezium-cluster-api/)
+- [Debezium Kafka Connect REST API](https://apis.io/collections/debezium/open-debezium-connect/)
+- [Debezium Kafka Connect REST Cluster Connectors API](https://apis.io/collections/debezium/open-debezium-connectors-api/)
+- [Debezium Kafka Connect REST Cluster Offsets API](https://apis.io/collections/debezium/open-debezium-offsets-api/)
+- [Debezium Kafka Connect REST Cluster Plugins API](https://apis.io/collections/debezium/open-debezium-plugins-api/)
+- [Debezium Kafka Connect REST Cluster Tasks API](https://apis.io/collections/debezium/open-debezium-tasks-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Debezium — jsonschema rules](https://apis.io/rules/debezium/debezium-jsonschema-spectral-rules/)
+- [Debezium — kafka connect api rules](https://apis.io/rules/debezium/debezium-kafka-connect-api-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Debezium Domain Security](https://apis.io/security/debezium/debezium-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Debezium Plans Pricing](https://apis.io/plans/debezium/debezium-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Debezium Rate Limits](https://apis.io/rate-limits/debezium/debezium-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Debezium Finops](https://apis.io/finops/debezium/debezium-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://debezium.io/)
 - [Documentation](https://debezium.io/documentation/)
-- [Getting Started](https://debezium.io/documentation/reference/stable/tutorial.html)
-- [Git Hub](https://github.com/debezium/debezium)
+- [Getting started](https://debezium.io/documentation/reference/stable/tutorial.html)
 - [Blog](https://debezium.io/blog/)
-- [Community](https://debezium.io/community/)
-- [License](https://www.apache.org/licenses/LICENSE-2.0)
-- [JSON-LD](json-ld/debezium-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Vocabulary](vocabulary/debezium-vocabulary.yml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 43.2 |
+| Contract governance | 27.3 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 7.9 |
+
+**Agent readiness 15.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/debezium/](https://apis.io/providers/debezium/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Debezium: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/debezium/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
